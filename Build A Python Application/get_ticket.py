@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 
 def get_ticket():
     requests.packages.urllib3.disable_warnings()
@@ -9,7 +10,7 @@ def get_ticket():
     }
     body_json = {
         "username": "devnetuser",
-        "password": "Cisco123!"
+        "password": os.environ["PASSWORD"]
     }
     resp = requests.post(api_url, json.dumps(body_json),  headers=headers,  verify=False)
     print("Ticket request status: ", resp.status_code)
