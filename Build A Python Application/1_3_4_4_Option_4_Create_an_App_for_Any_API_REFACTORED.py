@@ -51,7 +51,7 @@ def main():
     # Fetch and display public IP
     public_ip = ip_info.get_public_ip()
     if public_ip:
-        print(f"My public IP is: {public_ip}")
+        print("Public IP retrieved successfully.")
 
     # Fetch and display host information for a specific IP
     host_info = shodan_client.get_host_info('198.54.116.32')
