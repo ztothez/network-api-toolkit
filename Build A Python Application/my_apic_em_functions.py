@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 from tabulate import *
 
 def get_ticket():
@@ -10,9 +11,9 @@ def get_ticket():
     }
     body_json = {
         "username": "devnetuser",
-        "password": "Cisco123!"
+        "password": os.environ["PASSWORD"]
     }
-    resp=requests.post(api_url, json.dumps(body_json),  headers=headers,  verify=False)
+    resp=requests.post(api_url, json.dumps(body_json),  headers=headers,  verify=True)
     response_json = resp.json()                   
     print("\n","Ticket request status: ", resp.status_code)
     response_json = resp.json()
@@ -29,7 +30,7 @@ def print_host():
      "X-Auth-Token": ticket
     }
 
-    resp = requests.get(api_url, headers=headers, verify=False)
+    resp = requests.get(api_url, headers=headers, verify=True)
     response_json = resp.json()
     host_list = []
     i = 0
@@ -54,7 +55,7 @@ def print_device():
      "X-Auth-Token": ticket
     }
 
-    resp = requests.get(api_url, headers=headers, verify=False)
+    resp = requests.get(api_url, headers=headers, verify=True)
     print("\n","Status of /host request: ", resp.status_code)
     if resp.status_code != 200:
         raise Exception("Status code does not equal 200. Response text: " + resp.text)
