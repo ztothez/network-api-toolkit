@@ -1,5 +1,3 @@
-#1.3.4.2: Option 2 - Create an App for Sunrise and Sunset
-#request pip install pgeocode
 import requests, time , pgeocode
 from datetime import datetime, timedelta
 

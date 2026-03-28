@@ -1,5 +1,6 @@
 #1.3.4.1: Option 1 - Modify the MapQuest API App 
 import urllib.parse
+import os
 import requests
 
 main_api = "https://www.mapquestapi.com/directions/v2/route?"
@@ -12,7 +13,9 @@ while True:
         break
     print("(1) Metric\n" + "(2) Imperial\n")
     options = int(input("Give option: (1-2)"))
-    key = "aULrPQsx1pNzm6Tn9dJJa9POwdmhXMUa"
+    key = os.getenv("MAPQUEST_API_KEY")
+    if not key:
+        raise ValueError("MAPQUEST_API_KEY not set in environment variables")
     url = main_api + urllib.parse.urlencode({"key": key, "from":orig, "to":dest})
     noapi = main_api + urllib.parse.urlencode({"from": orig, "to":dest})
     print("URL: " + (noapi))
