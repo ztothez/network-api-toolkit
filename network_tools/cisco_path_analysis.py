@@ -8,7 +8,7 @@ import requests
 from tabulate import tabulate
 
 BASE_URL = "https://sandboxapicem.cisco.com/api/v1"
-USERNAME = "devnetuser"
+USERNAME = "USERNAME"
 PASSWORD_ENV = "PASSWORD"
 POLL_INTERVAL = 1
 POLL_TIMEOUT = 20
